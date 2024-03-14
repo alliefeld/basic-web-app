@@ -36,9 +36,6 @@ export default function QueryProcessor(query: string):string {
    }
   }
   else if (query.toLowerCase().includes('largest')){
-    if (numbers.length == 0) {
-      return ('no numbers were provided')
-    }
     return `${findLargestNumber(numbers)}`
   }
 
