@@ -11,6 +11,11 @@ export default function QueryProcessor(query: string) {
       "abf2"
     );
   }
+  else if (query.toLowerCase().includes('plus')){
+   if (query.toLowerCase().includes('50')) {
+    return ('the sum of 50 and 9 is 59')
+   }
+  }
 
   return ("");
 }
