@@ -16,6 +16,10 @@ function sumNumbers(numbers: number[]): number {
   return sum;
 
 }
+function subtractNumbers(numberA: number, numberB:number): number {
+  var difference = numberA - numberB;
+  return difference;
+}
 
 function multiplyNumbers(numbers: number[]): number {
   var product = 1;
@@ -25,6 +29,19 @@ function multiplyNumbers(numbers: number[]): number {
   return product;
 }
 
+function isASquare(number: number): boolean {
+  var squareRoot = Math.sqrt(number);
+  return squareRoot % 1 === 0;
+}
+
+function isACube(number: number): boolean {
+  var cubeRoot = Math.cbrt(number);
+  return cubeRoot % 1 === 0;
+}
+
+function raiseToPower(number: number, power: number): number {
+  return Math.pow(number, power);
+}
 
 export default function QueryProcessor(query: string):string {
   var words = query.replace(',', '').split(' ');
@@ -50,11 +67,25 @@ export default function QueryProcessor(query: string):string {
   else if (query.toLowerCase().includes('plus')){
    return `${sumNumbers(numbers)}`
   }
+  else if (query.toLowerCase().includes('minus')) {
+    return `${subtractNumbers(numbers[0], numbers[1])}`
+  }
   else if (query.toLowerCase().includes('largest')){
     return `${findLargestNumber(numbers)}`
   }
   else if (query.toLowerCase().includes('multiplied')) {
     return `${multiplyNumbers(numbers)}`
+  }
+  else if (query.toLowerCase().includes('square') && query.toLowerCase().includes('cube')) {
+    var result_array = [];
+    for (var i = 0; i < numbers.length; i++) {
+      if (isASquare(numbers[i]) && isACube(numbers[i])) {
+       result_array.push(`${numbers[i]},`);
+      }
+    }
+  }
+  else if (query.toLowerCase().includes('power of')) {
+    return `${raiseToPower(numbers[0], numbers[1])}`
   }
 
   return ("");
