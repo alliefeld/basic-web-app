@@ -8,6 +8,15 @@ function findLargestNumber(numbers: number[]): number {
   return largest;
 }
 
+function sumNumbers(numbers: number[]): number {
+  var sum = 0;
+  for (var i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum;
+
+}
+
 
 export default function QueryProcessor(query: string):string {
   var words = query.replace(',', '').split(' ');
@@ -31,9 +40,7 @@ export default function QueryProcessor(query: string):string {
     );
   }
   else if (query.toLowerCase().includes('plus')){
-   if (query.toLowerCase().includes('50')) {
-    return ('the sum of 50 and 9 is 59')
-   }
+   return `${sumNumbers(numbers)}`
   }
   else if (query.toLowerCase().includes('largest')){
     return `${findLargestNumber(numbers)}`
