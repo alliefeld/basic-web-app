@@ -11,11 +11,11 @@ export default function QueryProcessor(query: string): string {
       "abf2"
     );
   }
-  else if (query.toLowerCase().includes("name")) {
-    return (
-      "My name is Allie"
-    );
-  }
+  // else if (query.toLowerCase().includes("name")) {
+  //   return (
+  //     "My name is Allie"
+  //   );
+  // }
 
   return "";
 }
