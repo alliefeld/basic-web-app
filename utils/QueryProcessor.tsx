@@ -17,6 +17,14 @@ function sumNumbers(numbers: number[]): number {
 
 }
 
+function multiplyNumbers(numbers: number[]): number {
+  var product = 1;
+  for (var i = 0; i < numbers.length; i++) {
+    product *= numbers[i];
+  }
+  return product;
+}
+
 
 export default function QueryProcessor(query: string):string {
   var words = query.replace(',', '').split(' ');
@@ -44,6 +52,9 @@ export default function QueryProcessor(query: string):string {
   }
   else if (query.toLowerCase().includes('largest')){
     return `${findLargestNumber(numbers)}`
+  }
+  else if (query.toLowercase().includes('multiplied')) {
+    return `${multiplyNumbers(numbers)}`
   }
 
   return ("");
