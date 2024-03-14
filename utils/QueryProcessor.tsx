@@ -53,7 +53,7 @@ export default function QueryProcessor(query: string):string {
   else if (query.toLowerCase().includes('largest')){
     return `${findLargestNumber(numbers)}`
   }
-  else if (query.toLowercase().includes('multiplied')) {
+  else if (query.toLowerCase().includes('multiplied')) {
     return `${multiplyNumbers(numbers)}`
   }
 
