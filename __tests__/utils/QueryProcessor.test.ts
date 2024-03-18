@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 
 describe("QueryProcessor", () => {
     test("should return a string", () => {
-        const query = "test";
+        const query = "test!";
         const response: string = QueryProcessor(query);
         expect(typeof response).toBe("string");
     });
