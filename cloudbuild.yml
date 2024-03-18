@@ -1,0 +1,27 @@
+steps:
+  # Step 1: Checkout code from the repository
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/alliefeld/basic-web-app', '.']
+
+  # Step 2: Install dependencies and build
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+
+  # Step 3: Run tests
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['test']
+
+  # Step 4: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-image', '.']
+
+  # Step 5: Push the Docker image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/my-image']
+
+  # Step 6: Deploy to Google Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['run', 'deploy', 'my-service', '--image', 'gcr.io/$PROJECT_ID/my-image', '--platform', 'managed']
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=global'
+      - 'CLOUDSDK_CORE_PROJECT=agile-alignment-416917'
